@@ -6,15 +6,15 @@ from retinaface import RetinaFace
 img = cv.imread("asset/mjTest1.jpg")
 resp = RetinaFace.detect_faces("asset/mjTest1.jpg")
 # get full json output:
-for face_id, face_data in resp.items():
-    print(f"\nFace {face_id}:")
-    print(f"Score: {face_data['score'] * 100:.2f}%")
-    print(
-        f"Facial Area: ({face_data['facial_area'][0]}, {face_data['facial_area'][1]}) - ({face_data['facial_area'][2]}, {face_data['facial_area'][3]})")
-    print("Landmarks:")
-    for landmark, coordinates in face_data['landmarks'].items():
-        print(
-            f"  {landmark.capitalize()}: ({coordinates[0]:.2f}, {coordinates[1]:.2f})")
+# for face_id, face_data in resp.items():
+#     print(f"\nFace {face_id}:")
+#     print(f"Score: {face_data['score'] * 100:.2f}%")
+#     print(
+#         f"Facial Area: ({face_data['facial_area'][0]}, {face_data['facial_area'][1]}) - ({face_data['facial_area'][2]}, {face_data['facial_area'][3]})")
+#     print("Landmarks:")
+#     for landmark, coordinates in face_data['landmarks'].items():
+#         print(
+#             f"  {landmark.capitalize()}: ({coordinates[0]:.2f}, {coordinates[1]:.2f})")
 
 # now draw a rectangle on the face coordinates
 # The facial range has :
