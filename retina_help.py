@@ -1,6 +1,8 @@
-import retinaface as rf
+from retinaface import  RetinaFace
 
 
-# help(RetinaFace)
+help(RetinaFace)
+
+
+
 print(type(rf))
-rf.detect_faces(``)

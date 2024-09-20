@@ -3,7 +3,8 @@ from retinaface import RetinaFace
 
 # Initializing RetinaFace model choose 1: [onnx, pytorch, tenserflow,keras]
 # model = RetinaFace(backend='onnx')
-detector = RetinaFace()
+# detector = RetinaFace()
+
 # Specifying which camera to use
 video = cv.VideoCapture(0)
 
@@ -16,19 +17,20 @@ if not video.isOpened():
 while True:
     # capture video frame by frame
     ret, frame = video.read()
-    print(frame)
+    # print(frame)
     # check if teh frame was not captured
     if not ret:
         print("Error cannot read frame")
         break
     # If everything is fine detect face from model
     # faces = model.predict(frame)
-    faces = detector.detect_faces(frame)
-    # draw a rectangl;e over it
+    faces = RetinaFace.detect_faces(frame)
+    # draw a rectangle over it
     # Draw rectangles around detected faces
-    for face in faces:
-        x1, y1, x2, y2 = map(int, face['box'])
+    for face_id, face_info in faces.items():
+        x1, y1, x2, y2 = map(int, face_info['facial_area'])
         cv.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
 
     # display the frame in window
     cv.imshow("Video", frame)
