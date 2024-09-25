@@ -32,7 +32,7 @@ while True:
     # Draw rectangles around detected faces
     for (x, y, w, h) in faces_rect:
         faces_roi = frame[y:y+h, x:x+w]
-        cv.rectangle(frame, (x,x+w),(y,y+h), (0, 255, 0), 3)
+        cv.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 3)
 
     # display the frame in window
     cv.imshow("Video", frame)
