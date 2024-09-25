@@ -4,6 +4,7 @@ from retinaface import RetinaFace
 # Initializing RetinaFace model choose 1: [onnx, pytorch, tenserflow,keras]
 # model = RetinaFace(backend='onnx')
 # detector = RetinaFace()
+HAAR_CASCADE = cv.CascadeClassifier('har_facedetection.xml')   # Path to haar cascade algo
 
 # Specifying which camera to use
 video = cv.VideoCapture(0)
@@ -23,14 +24,15 @@ while True:
         print("Error cannot read frame")
         break
     # If everything is fine detect face from model
-    # faces = model.predict(frame)
-    faces = RetinaFace.detect_faces(frame)
+    # faces = RetinaFace.detect_faces(frame)
+    # This is still shot hahahah:) 
+    faces_rect = HAAR_CASCADE.detectMultiScale(
+                frame, scaleFactor=1.5, minNeighbors=5)
     # draw a rectangle over it
     # Draw rectangles around detected faces
-    for face_id, face_info in faces.items():
-        x1, y1, x2, y2 = map(int, face_info['facial_area'])
-        cv.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-
+    for (x, y, w, h) in faces_rect:
+        faces_roi = frame[y:y+h, x:x+w]
+        cv.rectangle(frame, (x,x+w),(y,y+h), (0, 255, 0), 3)
 
     # display the frame in window
     cv.imshow("Video", frame)

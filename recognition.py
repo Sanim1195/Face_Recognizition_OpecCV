@@ -9,7 +9,7 @@ features = np.load('features.npy', allow_pickle=True)
 labels = np.load('labels.npy')
 
 # instatiating the face recpgniser class
-face_recognizer = cv.face.LBPHFaceRecognizer_create()
+face_recognizer = cv.face.LBPHFaceRecognizer.create()
 # Reading trained the yml file
 face_recognizer.read('faces_trained.yml')
 

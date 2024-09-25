@@ -23,7 +23,7 @@ for (x, y, w, h) in faces:
     result = DeepFace.analyze(face_roi, actions=['emotion', 'age', 'gender'])
 
     # Print the analysis results
-    print(type(result))
+    print(result)
     # print(f"Emotion: {result['emotion']}, Age: {result['age']}, Gender: {result['gender']}")
 
 # Display the image with rectangles around detected faces
